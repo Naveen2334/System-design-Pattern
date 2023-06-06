@@ -1,5 +1,4 @@
-package compositePattern;
-
+package visitorPattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,16 @@ public class HtmlParentElement extends HtmlTag {
 	}
 	
 	@Override
+	public String getStartTag() {
+		return startTag;
+	}
+	
+	@Override
+	public String getEndTag() {
+		return endTag;
+	}
+	
+	@Override
 	public void addChildTag(HtmlTag htmlTag){
 		childrenTag.add(htmlTag);
 	}
@@ -57,4 +66,10 @@ public class HtmlParentElement extends HtmlTag {
 		System.out.println(endTag);
 		
 	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+
 }
